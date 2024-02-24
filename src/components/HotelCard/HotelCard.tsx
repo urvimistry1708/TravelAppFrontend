@@ -1,18 +1,18 @@
 import './HotelCard.css';
-import {Hotel} from './../../pages/Home/Home';
+import { Hotel } from './../../pages/Home/Home';
 
 interface HotelCardProps {
     hotel: Hotel; // Using the Hotel interface you already defined
-  }
+}
 
-export const HotelCard : React.FC<HotelCardProps> = ({ hotel }) => {
+export const HotelCard: React.FC<HotelCardProps> = ({ hotel }) => {
 
-    const {_id, name, image, address, state, rating, price } = hotel;
+    const { _id, name, image, address, state, rating, price } = hotel;
 
-    return(
+    return (
         <div className="relative hotelcard-container shadow cursor-pointer ">
             <div>
-                <img className = "img" src ={image} alt ={name} /> 
+                <img className="img" src={image} alt={name} />
                 <div className="hotelcard-details">
                     <div className='d-flex align-center'>
                         <span className="location">{address}, {state}</span>
@@ -21,20 +21,20 @@ export const HotelCard : React.FC<HotelCardProps> = ({ hotel }) => {
                             <span>{rating}</span>
                         </span>
                     </div>
-                    
+
                     <p className="hotel-name">{name}</p>
                     <p className="price-details">
                         <span className="price">${price}</span>
                         <span>night</span>
                     </p>
                 </div>
-                
+
             </div>
-            
-                <button className="button btn-wishlist absolute">
+
+            <button className="button btn-wishlist absolute">
                 <span className="material-icons favourite cursor">favorite</span>
-                </button>
-            
+            </button>
+
         </div>
     );
 }

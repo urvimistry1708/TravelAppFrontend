@@ -1,20 +1,20 @@
 
-import{Fragment, useEffect, useState} from "react";
+import { Fragment, useEffect, useState } from "react";
 import './Home.css';
-import axios from 'axios';  
+import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-import {Navbar, HotelCard} from '../../components';
+import { Navbar, HotelCard } from '../../components';
 
-export interface Hotel  {
+export interface Hotel {
     _id: string;
     name: string;
-    image: string; 
+    image: string;
     address: string;
     state: string;
     rating: number;
     price: number;
-   
+
 }
 
 export const Home = () => {
@@ -23,72 +23,73 @@ export const Home = () => {
 
     //const [hotelToShow, setHotelsToShow] = useState([]);
 
-    const [currentIndex, setCurrentIndex] =useState(16);
+    const [currentIndex, setCurrentIndex] = useState(16);
     const [testData, setTestData] = useState([]);
 
     const [hotels, setHotels] = useState<Hotel[]>([]);
 
     useEffect(() => {
-        (async() => {
-            try{
-                    const {data} = await axios.get("https://lazy-gold-codfish-tam.cyclic.app/api/hotels");
-                    //console.log(data);
-                    setTestData(data);
-                    setHotels(data ? data.slice(0,16) : []);
+        (async () => {
+            try {
+                const { data } = await axios.get("https://lazy-gold-codfish-tam.cyclic.app/api/hotels");
+                //console.log(data);
+                setTestData(data);
+                setHotels(data ? data.slice(0, 16) : []);
             }
-            catch(err){
+            catch (err) {
                 console.log(err);
             }
         })();
     }, []);
 
     const fetchMoreData = () => {
-        if(hotels.length >= testData.length){
+        if (hotels.length >= testData.length) {
             setHasMore(false);
             return
-        }setTimeout(() => {
-            if (hotels && hotels.length > 0){
+        } 
+        setTimeout(() => {
+            if (hotels && hotels.length > 0) {
                 setHotels(hotels.concat(testData.slice(currentIndex, currentIndex + 16)));
                 setCurrentIndex(prev => prev + 16);
             }
-            else{
+            else {
                 setHotels([]);
             }
 
-        },1000)
+        }, 1000)
     }
 
 
     return (
         <Fragment>
-        <Navbar />
-        <main className='main d-flex align-center wrap gap-larger'>
+            <Navbar />
+            <main className='main d-flex align-center wrap gap-larger'>
 
-            {
-                hotels && hotels.length > 0 ? (
-                    <InfiniteScroll  dataLength={hotels.length}
-                        next={fetchMoreData}
-                        hasMore={hasMore}
-                        loader={hotels.length > 0 && <h3 className="loading">Loading...</h3>}
-                        endMessage={<p className="loading">You have seen it all.</p>} >
-                        
-                        <main className='main d-flex align-center wrap gap-larger'>
-                            {
-                                hotels && hotels.map((hotel) => <HotelCard key = {hotel._id} hotel={hotel} /> )
-                            }
-                        </main>
+                {
+                    hotels && hotels.length > 0 ? (
+                        <InfiniteScroll dataLength={hotels.length}
+                            next={fetchMoreData}
+                            hasMore={hasMore}
+                            loader={hotels.length > 0 && <h3 className="loading">Loading...</h3>}
+                            endMessage={<p className="loading">You have seen it all.</p>} >
 
-                    </InfiniteScroll>
-                    
+                            <main className='main d-flex align-center wrap gap-larger'>
+                                {
+                                    hotels && hotels.map((hotel) => <HotelCard key={hotel._id} hotel={hotel} />)
+                                }
+                            </main>
+
+                        </InfiniteScroll>
+
                     ) : (
                         <>
                         </>
                     )
-            }
-           
-        
-        </main>
-        
+                }
+
+
+            </main>
+
         </Fragment>
     );
 }
