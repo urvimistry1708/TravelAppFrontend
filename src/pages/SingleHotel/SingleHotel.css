@@ -1,0 +1,11 @@
+.single-hotel-page {
+  display: flex;
+  flex-direction: column;
+  padding: 7rem 8rem 2rem 9rem;
+  min-height: min-content;
+}
+
+.hotel-name-add {
+  font-size: 1.5rem;
+  padding-bottom: 8px;
+}

@@ -5,6 +5,8 @@ import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { Navbar, HotelCard } from '../../components';
+import { Categories } from "../../components/Categories/Categories";
+import { useCategory } from "../../context";
 
 export interface Hotel {
     _id: string;
@@ -20,6 +22,7 @@ export interface Hotel {
 export const Home = () => {
 
     const [hasMore, setHasMore] = useState(true);
+    const { hotelCategory } = useCategory();
 
     //const [hotelToShow, setHotelsToShow] = useState([]);
 
@@ -31,8 +34,8 @@ export const Home = () => {
     useEffect(() => {
         (async () => {
             try {
-                const { data } = await axios.get("https://lazy-gold-codfish-tam.cyclic.app/api/hotels");
-                //console.log(data);
+                const { data } = await axios.get(`https://lazy-gold-codfish-tam.cyclic.app/api/hotels?category=${hotelCategory}`);
+                console.log("Data" + data.length);
                 setTestData(data);
                 setHotels(data ? data.slice(0, 16) : []);
             }
@@ -40,13 +43,13 @@ export const Home = () => {
                 console.log(err);
             }
         })();
-    }, []);
+    }, [hotelCategory]);
 
     const fetchMoreData = () => {
         if (hotels.length >= testData.length) {
             setHasMore(false);
             return
-        } 
+        }
         setTimeout(() => {
             if (hotels && hotels.length > 0) {
                 setHotels(hotels.concat(testData.slice(currentIndex, currentIndex + 16)));
@@ -63,6 +66,8 @@ export const Home = () => {
     return (
         <Fragment>
             <Navbar />
+
+            <Categories />
             <main className='main d-flex align-center wrap gap-larger'>
 
                 {
@@ -82,8 +87,8 @@ export const Home = () => {
                         </InfiniteScroll>
 
                     ) : (
-                        <>
-                        </>
+                        <main className='no-data center-content'>No Data!</main>
+
                     )
                 }
 
