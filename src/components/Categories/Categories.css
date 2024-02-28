@@ -1,5 +1,5 @@
 .categories {
-  padding: 6rem 2rem 1rem 2rem;
+  padding: 6rem 1rem 1rem 1rem;
   color: var(--text-color-primary);
   background-color: var(--background-color);
   position: fixed;
@@ -26,19 +26,66 @@
   
   
   .gap-large {
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
-  button{
+  .left-right{
     border-radius: 50px;
+    border: 1px solid black;
     width: 30px;
     height: 30px;
   }
 
-  button span{
+  .left-right span{
    align-content: center;
   }
 
+
+  .rec.rec-swipable{
+    gap: 1.5rem;
+  }
+  
+  .rec.rec-item-wrapper {
+    width: max-content !important;
+  }
+  
+  .category-color {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+  }
+  
+  .item {
+    cursor: pointer;
+    font-size: .875rem;
+    padding: 8px 10px;
+    border-radius: 2rem;
+  }
+  
+  .border-bottom {
+    border-bottom: 1px solid var(--text-color-primary);
+  }
+  
+  .button.btn-filter {
+   
+    align-self: flex-start;
+  }
+  
+  .btn-filter:hover,
+  .btn-category:hover {
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rec.rec-arrow:disabled {
+    visibility: hidden;
+  }
+  
+  .rec.rec-arrow {
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+  }
 
  
   
