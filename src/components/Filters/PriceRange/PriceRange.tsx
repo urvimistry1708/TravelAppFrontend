@@ -15,6 +15,7 @@ export const PriceRange: React.FC = () => {
   console.log({ priceRange });
 
   const handlePriceChange = (event: Event, newValue: number | number[], activeThumb: number) => {
+    console.log(event);
     if (!Array.isArray(newValue)) {
       return;
     }

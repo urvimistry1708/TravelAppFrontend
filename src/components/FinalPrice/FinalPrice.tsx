@@ -19,7 +19,7 @@ export const FinalPrice: React.FC<{ singleHotel: SingleHotel }> = ({ singleHotel
   const { guests, dateDispatch, checkInDate, checkOutDate } = useDate();
 
 
-  const { accessToken, authDispatch } = useAuth();
+  const { authDispatch } = useAuth();
 
   useEffect(()=>{
 

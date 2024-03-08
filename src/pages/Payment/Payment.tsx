@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useDate, useHotel } from "../../context";
-import { v4 as uuid } from "uuid";
+import { useDate } from "../../context";
 import axios from "axios";
 import "./Payment.css";
 
@@ -23,7 +22,7 @@ export const Payment: React.FC = () => {
 
   const { guests, checkInDate, checkOutDate } = useDate();
 
-  const { setHotel } = useHotel();
+
 
   const numberOfNights =
     checkInDate && checkOutDate
@@ -53,16 +52,7 @@ export const Payment: React.FC = () => {
 
   const totalPayableAmount = price * numberOfNights + 150;
 
-  const loadScript = (source: string): Promise<boolean> => {
-    return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = source;
-      script.onload = () => resolve(true);
-      script.onerror = () => resolve(false);
-      document.body.appendChild(script);
-    });
-  };
-
+ 
   const handleConfirmBookingClick = async () => {
     
     navigate("/");

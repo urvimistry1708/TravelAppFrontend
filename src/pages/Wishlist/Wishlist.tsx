@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Navbar, HotelCard, ProfileDropDown, AuthModal } from "../../components";
-import { useWishlist, useAuth } from "../../context";
+import {  useAuth } from "../../context";
 import "./Wishlist.css";
 import axios from "axios";
 
@@ -20,7 +20,7 @@ export interface Hotel {
     isCancelable:boolean;
   }
 const Wishlist: React.FC = () => {
-  const { wishlist } = useWishlist();
+  // const { wishlist } = useWishlist();
   const [hotels, setHotels] = useState<Hotel[]>([]);
 
   const { isAuthModalOpen, isDropDownModalOpen } = useAuth();

@@ -55,26 +55,6 @@ export const AuthLogin: React.FC = () => {
     });
   };
 
-  const handleTestCredentialsClick = async () => {
-    const response: LoginResponse | undefined = await loginHandler(
-      7878787878,
-      "Abcd@1234"
-    );
-    authDispatch({
-      type: "SET_ACCESS_TOKEN",
-      payload:  response?.accessToken,
-    });
-    authDispatch({
-      type: "SET_USER_NAME",
-      payload:  response?.username,
-    });
-    authDispatch({
-      type: "CLEAR_USER_DATA",
-    });
-    authDispatch({
-      type: "SHOW_AUTH_MODAL",
-    });
-  };
 
   return (
     <div className="auth-container">
