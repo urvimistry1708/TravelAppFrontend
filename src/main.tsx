@@ -5,6 +5,8 @@ import App from "./App.tsx";
 import { CategoryProvider } from "./context/category-context.tsx";
 import { DateProvider } from "./context/date-context.tsx";
 import { FilterProvider } from "./context/filter-context.tsx";
+import { AuthProvider } from "./context/auth-context.tsx";
+import { HotelProvider } from "./context/hotel-context.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -12,7 +14,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <CategoryProvider>
         <DateProvider>
           <FilterProvider>
-            <App />
+            <AuthProvider>
+              <HotelProvider>
+                <App />
+              </HotelProvider>
+            </AuthProvider>
           </FilterProvider>
         </DateProvider>
       </CategoryProvider>

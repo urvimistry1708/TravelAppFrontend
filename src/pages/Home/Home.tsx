@@ -3,9 +3,9 @@ import "./Home.css";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import { Navbar, HotelCard, SearchStayWithDate } from "../../components";
+import { Navbar, HotelCard, SearchStayWithDate, AuthModal } from "../../components";
 import { Categories } from "../../components/Categories/Categories";
-import { useCategory, useDate, useFilter } from "../../context";
+import { useCategory, useDate, useFilter, useAuth } from "../../context";
 import { Filter } from "../../components/Filters/Filter";
 
 export interface Hotel {
@@ -44,6 +44,9 @@ export const Home = () => {
   const [testData, setTestData] = useState([]);
 
   const [hotels, setHotels] = useState<Hotel[]>([]);
+
+  const { isAuthModalOpen } = useAuth();
+  
 
   useEffect(() => {
     (async () => {
@@ -128,6 +131,8 @@ export const Home = () => {
       </main>
       {isSearchModalOpen && <SearchStayWithDate />}
       {isFilterModalOpen && <Filter />}
+      {isAuthModalOpen && <AuthModal />}
+     
     </div>
   );
 };

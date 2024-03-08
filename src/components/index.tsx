@@ -4,3 +4,8 @@ export { HotelImages } from "./HotelImages/HotelImages";
 export { HotelDetails } from "./HotelDetails/HotelDetails";
 export { FinalPrice } from "./FinalPrice/FinalPrice";
 export { SearchStayWithDate } from "./SearchStayWithDate/SearchStayWithDate";
+export { AuthLogin } from "./Auth/AuthLogin";
+export { AuthSignup } from "./Auth/AuthSignup";
+export { AuthModal } from "./AuthModal/AuthModal";
+export { ProfileDropDown } from "./ProfileDropDown/ProfileDropDown";
+export { OrderSummaryComp} from  "./OrderSummaryComp/OrderSummaryComp";

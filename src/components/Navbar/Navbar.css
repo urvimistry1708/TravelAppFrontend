@@ -52,6 +52,10 @@
     font-size:2.5rem
 }
 
+.profile-name{
+    color: black;
+    padding: 5px;
+}
 .menu{
     border-right:1px solid var(--accent-color);
 }
